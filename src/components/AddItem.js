@@ -14,6 +14,17 @@ const AddItem = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleAddDoctor = (e) => {
+    e.preventDefault();
+    dispatch(createDoctor({
+      name,
+      doctor_type: doctorType,
+      image_url: imageUrl,
+      address,
+    }));
+    navigate('/item');
+  };
+
   return (
     <>
       <div className="flex flex-row h-[100dvh] justify-center md:w-[100dvw] md:flex md:flex-row">
