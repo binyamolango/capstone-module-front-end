@@ -26,7 +26,17 @@ const LogIn = () => {
   };
 
   return (
+    <>
+      <div className="flex items-center justify-center h-screen bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+        <div className="flex items-center justify-center flex-col gap-6 w-4/5 p-12 md:max-w-fit md:max-h-fit bg-white rounded-md">
+          <h1 className="font-bold text-3xl text-center">
+            Welcome to
+            <span className="text-[#4e8de0] "> Edenic Health</span>
+          </h1>
 
+        </div>
+      </div>
+    </>
   );
 };
 
