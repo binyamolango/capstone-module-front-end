@@ -102,7 +102,16 @@ const Navigation = () => {
           </div>
         </nav>
 
-
+        <footer className="footer flex flex-col gap-4 w-full pt-4 pb-2 pl-4 pr-4">
+          <ul className="footer-center justify-start items-end gap-3.5 inline-flex">
+            <li className="w-6 h-6 relative"><img src={fb} alt="" /></li>
+            <li className="w-6 h-6 relative"><img src={x} alt="" /></li>
+            <li className="w-6 h-6 relative"><img src={google} alt="" /></li>
+            <li className="w-6 h-6 relative"><img src={github} alt="" /></li>
+            <li className="w-6 h-6 relative"><img src={linkedin} alt="" /></li>
+          </ul>
+          <p className="text-gray-300 text-xs font-medium font-['Inter'] leading-[18px] tracking-[2.88px]">@ 2024 Edenic Health</p>
+        </footer>
       </div>
     </div>
   );
