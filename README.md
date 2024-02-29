@@ -1,179 +1,123 @@
 <a name="readme-top"></a>
 
-<div align="center">
-
-  [![React](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/150px-React-icon.svg.png "react") ](https://reactjs.org/)
-</div>
-
-
-<!-- TABLE OF CONTENTS -->
 # 📗 Table of Contents
 
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 Final Capstone Frontend ](#-final-capstone-frontend-)
-  - [🛠 Built With ](#-built-with-)
-    - [Tech Stack ](#tech-stack-)
-    - [Key Features ](#key-features-)
-  - [💻 Getting Started ](#-getting-started-)
-    - [Prerequisites](#prerequisites)
-    - [Setup](#setup)
-    - [Installation](#installation)
-    - [Running the App](#running-the-app)
-  - [Back End Project ](#back-end-project-)
-  - [👥 Authors ](#-authors-)
-  - [🔭 Future Features ](#-future-features-)
-  - [🤝 Contributing ](#-contributing-)
-  - [💖 Show your support ](#-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [📝 License ](#-license-)
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+- [👥 Author](#author)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
-# 📖 Capstone Module Front End<a name="about-project"></a>
+# 📖 Capstone Module Front End <a name="about-project"></a>
 
-**Capstone Module Front End** is a project that hold the front end section of the final capstone project.
+**Capstone Module Front End** is a web application reserving a doctor that fetches data rails API through this platform.
 
 ## 🛠 Built With <a name="built-with"></a>
+React, node, Visual Studio Code
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<details>
-  <ul>
-    <li><a href="https://reactjs.org/">React</a></li>
-    <li><a href="https://www.redux.js.org/">Redux</a></li>
-  </ul>
-</details>
+- **React**
+- **Redux**
 
-<!-- Features -->
 ### Key Features <a name="key-features"></a>
 
-The key features of this project include.
-
-- **API Integration**: The front-end is connected to the back-end to fetch data from the back-end.
-
+- **API Integration**
+- **Interactive UI**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To get a local copy up and running, follow these steps.
+### Setup <a name="setup"></a>
 
-### Prerequisites
+To use this project, Clone this repository to your desired folder by pasting this command in your command line interface:
 
-Before you begin, make sure you have the following installed on your machine:
+- `git clone https://github.com/binyamolango/capstone-module-front-end.git`
 
-- [x] A code editor (like VSCode, Sublime, Atom, etc.): You can download VSCode [here](https://code.visualstudio.com/download), Sublime [here](https://www.sublimetext.com/3), and Atom [here](https://atom.io/).
-- [x] Git: You can download Git [here](https://git-scm.com/downloads).
-- [x] Node.js: You can download Node.js [here](https://nodejs.org/en/download/).
+Rails API link
 
-### Setup
+- [https://github.com/binyamolango/capstone-module-back-end](https://github.com/binyamolango/capstone-module-back-end)
 
-To setup this project locally:
+### Prerequisites <a name="prerequisites"></a>
 
-1. Open terminal in VScode.
-2. Navigate to the directory where you want clone the copy of this repository.
-3. Create new directory [optional].
-4. Clone the repository by running the following command:
+  Node
+  Git
 
-```
-git clone https://github.com/binyamolango/capstone-module-front-end.git
-```
+### Install <a name="install"></a>
 
-5. Navigate into the cloned repository:
+To install the project's dependencies, run:
 
 ```
-cd final_capstone_frontend
+  bundle install
+  yarn install
 ```
 
-### Installation
+### Usage <a name="usage"></a>
 
-Install the required dependencies by running the following command:
-
-```
-npm install
-```
-
-### Running the App
-
-To run the application, run the following command:
+To run the project, execute the following command:
 
 ```
-npm start
+  bin/dev
 ```
 
-This will start the application in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Run tests <a name="run tests"></a>
 
+To test, run:
+
+```
+  npm test
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- BACK END PROJECT -->
-## Back End Project <a name="contributing"></a>
-
-- [Back End Project Link](https://github.com/binyamolango/capstone-module-back-end)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- AUTHORS -->
-## 👥 Author <a name="authors"></a>
+## 👥 Author <a name="author"></a>
 
 - GitHub: [@binyamolango](https://github.com/binyamolango)
-- Twitter: [@binyamolango](https://twitter.com/AjrassTajemouti)
+- Twitter: [@binyamolango](https://twitter.com/binyamolango)
 - LinkedIn: [binyam](https://linkedin.com/in/binyamyohannes)
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- FUTURE FEATURES -->
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Implementation of some UX improvements: transitions and/or animations, etc.**
-
+- **Customizable Greetings**
+- **Enhanced Backend Functionality**
+- **User Authentication**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- CONTRIBUTING -->
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](../../issues/).
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## ⭐️ Show your support <a name="support"></a>
+
+Kindly give this project a star if you like it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- SUPPORT -->
-## 💖 Show your support <a name="support"></a>
-
-Give a ⭐️, if you like this project!
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- ACKNOWLEDGEMENTS -->
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
- We would like to thank:
-- [Microverseinc](https://github.com/microverseinc) for [Readme-template](https://github.com/microverseinc/readme-template).
-- [React](https://reactjs.org/) for the amazing library.
-- [Redux](https://www.redux.js.org/) for the amazing state management library.
-
+I would like to thank Microverse.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-<!-- LICENSE -->
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
-
+This project is [MIT](/LICENSE) license.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
