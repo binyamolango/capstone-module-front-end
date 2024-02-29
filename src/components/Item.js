@@ -67,7 +67,48 @@ const Item = () => {
 
   return (
     <>
+      {loading ? (
+        <div className="flex items-center justify-center h-screen">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className="flex flex-row h-[100dvh] justify-center md:w-[100dvw] md:flex md:flex-row">
+          <div className="md:flex md:w-[15%]">
+            <Navigation />
+          </div>
+          <div className="flex flex-col md:w-5/6 w-full bg-white text-gray-700 dark:text-gray-800 p-4 gap-8 justify-center items-center">
+            {selectedDoctor ? (
+              <ItemDetails doctor={selectedDoctor} backButton={handleBackButton} />
+            ) : (
+              <>
+                <h1 className="text-slate-800 text-4xl font-bold font-['Inter'] leading-[44px] m-8">Our Doctors</h1>
 
+                <div className="flex justify-between w-[100%] md:w-[85%] md:mt-4 md:absolute bottom-0 md:bottom-[40%]">
+                  <button
+                    className={`arrow__btn w-[114px] h-[74px] rounded-r-[80px] ${hasDoctorsOnLeft ? ' bg-blue-400' : 'bg-gray-300'} `}
+                    type="button"
+                    onClick={handlePrevClick}
+                    disabled={!hasDoctorsOnLeft}
+                    aria-label="Previous"
+                  >
+                    <ArrowBackIcon className="text-white" />
+                  </button>
+
+                  <button
+                    className={`arrow__btn w-[114px] h-[74px] rounded-l-[80px] ${hasDoctorsOnRight ? ' bg-blue-400' : 'bg-gray-300'}`}
+                    type="button"
+                    onClick={handleNextClick}
+                    disabled={!hasDoctorsOnRight}
+                    aria-label="Next"
+                  >
+                    <ArrowForwardIcon className="text-white" />
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 };
