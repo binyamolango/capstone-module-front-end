@@ -82,7 +82,30 @@ const Item = () => {
             ) : (
               <>
                 <h1 className="text-slate-800 text-4xl font-bold font-['Inter'] leading-[44px] m-8">Our Doctors</h1>
-
+                <div className="doctor-card flex flex-col md:flex md:flex-row md:justify-center md:items-center gap-4">
+                  {displayDoctors.map((doctor) => (
+                    <button
+                      key={doctor.id}
+                      type="button"
+                      onClick={() => handleDoctorClick(doctor)}
+                      className="flex items-center justify-center flex-col p-4 rounded-xl gap-4 border-2 border-gray-100 flex-1 "
+                    >
+                      <div className="gap-4">
+                        <img className="w-[189px] h-[189px] rounded-full" src={doctor.image_url} alt="" />
+                      </div>
+                      <div className=" flex flex-col justify-center gap-2">
+                        <h2 className="text-slate-800 text-lg text-center font-medium text-ellipsis overflow-hidden w-[250px] whitespace-nowrap">{doctor.name}</h2>
+                        <hr />
+                        <h2 className="text-gray-300 text-sm text-center font-normal text-ellipsis overflow-hidden w-[250px] whitespace-nowrap">{doctor.doctor_type}</h2>
+                      </div>
+                      <ul className="flex gap-4 justify-around w-full">
+                        <li className="w-8 h-8 rounded-full border border-gray-300 flex justify-center items-center"><img className="w-4 h-4 relative" src={x} alt="" /></li>
+                        <li className="w-8 h-8 rounded-full border border-gray-300 flex justify-center items-center"><img className="w-4 h-4 relative" src={x} alt="" /></li>
+                        <li className="w-8 h-8 rounded-full border border-gray-300 flex justify-center items-center"><img className="w-4 h-4 relative" src={x} alt="" /></li>
+                      </ul>
+                    </button>
+                  ))}
+                </div>
                 <div className="flex justify-between w-[100%] md:w-[85%] md:mt-4 md:absolute bottom-0 md:bottom-[40%]">
                   <button
                     className={`arrow__btn w-[114px] h-[74px] rounded-r-[80px] ${hasDoctorsOnLeft ? ' bg-blue-400' : 'bg-gray-300'} `}
