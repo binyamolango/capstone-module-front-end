@@ -33,7 +33,21 @@ const LogIn = () => {
             Welcome to
             <span className="text-[#4e8de0] "> Edenic Health</span>
           </h1>
-
+          <form className="flex items-center justify-center flex-col gap-6" onSubmit={(e) => handleSubmit(e)}>
+            <TextField
+              required
+              id="outlined-basic"
+              type="text"
+              onChange={(e) => handleUsernameChange(e)}
+              label="Username"
+              variant="outlined"
+            />
+            <div className="flex gap-4">
+              <Button type="submit" variant="outlined" disabled={loading}>
+                {loading ? <CircularProgress size={24} /> : 'Log in'}
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </>
