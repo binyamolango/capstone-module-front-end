@@ -11,6 +11,9 @@ const AddItem = () => {
   const [address, setAddress] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex flex-row h-[100dvh] justify-center md:w-[100dvw] md:flex md:flex-row">
