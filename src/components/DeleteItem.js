@@ -27,7 +27,14 @@ const DeleteItem = () => {
         <Navigation />
       </div>
       <div className=" flex flex-col md:w-5/6 bg-white  text-gray-700 dark:text-gray-800 p-4 w-full md:pr-16 pr-0 gap-8">
-        <h1 className="text-center">Under Construction</h1>
+      <h1 className="md:text-center md:text-slate-800 text-4xl md:text-6xl md:font-bold  font-bold text-center md:font-['Inter'] md:leading-[72px]">Delete Doctors</h1>
+          { isLoading && <div>Loading...</div> }
+          { error && (
+          <div>
+            Error:
+            {error}
+          </div>
+          ) }
       </div>
     </div>
   </>
