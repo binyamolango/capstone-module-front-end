@@ -1,7 +1,26 @@
-import React from 'react';
+import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import Navigation from './Navigation';
+import { fetchDoctors, deleteDoctor } from '../redux/doctors/doctorsSlice';
 
-const DeleteItem = () => (
+const DeleteItem = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.doctors.isLoading);
+  const error = useSelector((state) => state.doctors.error);
+  const doctors = useSelector((state) => state.doctors.doctors);
+
+  useEffect(() => {
+    dispatch(fetchDoctors());
+  }, [dispatch]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteDoctor(id)).then(() => {
+      dispatch(fetchDoctors());
+    });
+  };
+
+  return (
   <>
     <div className="flex flex-row h-[100dvh] justify-center md:w-[100dvw] md:flex md:flex-row">
       <div className="md:flex md:w-[15%]">
@@ -12,6 +31,6 @@ const DeleteItem = () => (
       </div>
     </div>
   </>
-);
+)};
 
 export default DeleteItem;
