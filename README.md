@@ -90,7 +90,6 @@ To test, run:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Customizable Greetings**
 - **Enhanced Backend Functionality**
 - **User Authentication**
 
