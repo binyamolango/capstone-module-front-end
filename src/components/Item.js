@@ -76,7 +76,7 @@ const Item = () => {
           <div className="md:flex md:w-[15%]">
             <Navigation />
           </div>
-          <div className="flex flex-col md:w-5/6 w-full bg-white text-gray-700 dark:text-gray-800 p-4 gap-8 justify-center items-center">
+          <div className="flex flex-col md:w-5/6 w-full bg-white text-gray-700 dark:text-gray-800 gap-8 justify-center items-center">
             {selectedDoctor ? (
               <ItemDetails doctor={selectedDoctor} backButton={handleBackButton} />
             ) : (
