@@ -6,6 +6,7 @@ import DeleteItem from './components/DeleteItem';
 import AddReservation from './components/AddReservation';
 import MyReservation from './components/MyReservation';
 import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/item" element={<Item />} />
           <Route path="/adddoctor" element={<AddItem />} />
           <Route path="/deletedoctor" element={<DeleteItem />} />

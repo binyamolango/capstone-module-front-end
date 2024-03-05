@@ -25,6 +25,13 @@ const LogIn = () => {
     setName(e.target.value);
   };
 
+  const handleLogIn = () => {
+    navigate('/');
+  };
+
+  const handleSignUp = () => {
+    navigate('/signup');
+  };
   return (
     <>
       <div className="flex items-center justify-center h-screen bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
@@ -32,6 +39,9 @@ const LogIn = () => {
           <h1 className="font-bold text-3xl text-center">
             Welcome to
             <span className="text-[#4e8de0] "> Edenic Health</span>
+          </h1>
+          <h1 className="font-bold text-3xl text-center">
+            Log in
           </h1>
           <form className="flex items-center justify-center flex-col gap-6" onSubmit={(e) => handleSubmit(e)}>
             <TextField
@@ -43,8 +53,11 @@ const LogIn = () => {
               variant="outlined"
             />
             <div className="flex gap-4">
-              <Button type="submit" variant="outlined" disabled={loading}>
+              <Button type="submit" variant="outlined" disabled={loading} onClick={handleLogIn}>
                 {loading ? <CircularProgress size={24} /> : 'Log in'}
+              </Button>
+              <Button type="submit" variant="outlined" disabled={loading} onClick={handleSignUp}>
+                {loading ? <CircularProgress size={24} /> : 'Sign up'}
               </Button>
             </div>
           </form>
