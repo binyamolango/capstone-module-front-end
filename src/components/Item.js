@@ -40,6 +40,10 @@ const Item = () => {
     displayDoctors = isMobile
       ? fetchedDoctors.slice(startIndex, startIndex + 1)
       : fetchedDoctors.slice(startIndex, startIndex + 3);
+  } else if (fetchedDoctors && fetchedDoctors.length <= 3) {
+    displayDoctors = isMobile
+      ? fetchedDoctors.slice(startIndex, startIndex + 1)
+      : fetchedDoctors;
   }
 
   const handleNextClick = () => {
