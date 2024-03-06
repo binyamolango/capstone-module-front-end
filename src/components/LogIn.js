@@ -26,11 +26,11 @@ const LogIn = () => {
   };
 
   const handleLogIn = () => {
-    navigate('/');
+    navigate('/login');
   };
 
   const handleSignUp = () => {
-    navigate('/signup');
+    navigate('/');
   };
   return (
     <>
