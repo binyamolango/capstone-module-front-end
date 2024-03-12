@@ -22,6 +22,26 @@ const createUser = createAsyncThunk('user/createUser', async (data) => {
   }
 });
 
+const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+  try {
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    const response = await fetch(url, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error: error.message };
+  }
+});
+
 const initialState = {
   isLoading: false,
   user: {},
@@ -45,10 +65,21 @@ const usersSlice = createSlice({
       .addCase(createUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      .addCase(fetchUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.users = action.payload;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
 
 });
 
-export { createUser };
+export { createUser, fetchUsers };
 export default usersSlice.reducer;
