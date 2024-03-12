@@ -1,6 +1,8 @@
 import {
-  TextField, Select, MenuItem, CircularProgress,
+  Select, MenuItem, CircularProgress,
 } from '@mui/material';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -51,7 +53,7 @@ const AddReservation = () => {
         doctor_id: doctor.id,
       },
     }));
-    navigate('/item');
+    navigate('/myappointments');
   };
 
   return (
@@ -68,13 +70,19 @@ const AddReservation = () => {
           <div className="flex flex-col md:w-5/6 bg-white  text-gray-700 dark:text-gray-800 p-4 w-full md:pr-16 pr-0 gap-8">
             <div className="flex flex-col h-full justify-center items-center  md:items-end gap-12 md:pr-16 pr-0 w-full">
               <div className="title-center">
-                <h1 className="md:text-right md:text-slate-800 text-4xl md:text-6xl md:font-bold  font-bold text-center md:font-['Inter'] md:leading-[72px]">Book Appointment</h1>
+                <h1 className="md:text-right md:text-slate-800 text-4xl md:text-6xl md:font-bold  font-bold text-right md:font-['Inter'] md:leading-[72px]">Book Appointment</h1>
               </div>
               <form className="flex items-center flex-col w-full md:flex-row justify-center md:pl-4 gap-6" onSubmit={(e) => handleSubmit(e)}>
                 <div className="flex items-center flex-col w-full md:flex-row justify-center md:pl-4 gap-6">
-                  <TextField className="w-full" type="text" placeholder="Enter Date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                  <DatePicker
+                    className="w-full date__style"
+                    placeholderText="Enter Date"
+                    selected={date}
+                    onChange={(date) => setDate(date)}
+                    required
+                  />
                   <Select className="w-full" value={doctor} onChange={(e) => setDoctor(e.target.value)} required displayEmpty>
-                    <MenuItem value="" disabled>Select Doctor</MenuItem>
+                    <MenuItem value="" className="select__doctor" disabled>Select Doctor</MenuItem>
                     {doctors.map((doctor) => (
                       <MenuItem key={doctor.id} value={doctor}>{doctor.name}</MenuItem>
                     ))}
