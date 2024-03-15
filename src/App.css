@@ -1,0 +1,79 @@
+.active {
+  background-color: #639be4;
+  color: white;
+}
+
+.active:hover {
+  background-color: #4e8de0;
+  color: white;
+}
+
+.nav__section {
+  z-index: 15;
+}
+
+.arrow__btn {
+  z-index: 10;
+}
+
+.date__style {
+  border: 1px solid rgb(194, 193, 193);
+  border-radius: 4px;
+  width: 100%;
+  display: block;
+  padding: 15.5px 13px;
+}
+
+.logo-img {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.doc-img {
+  align-items: center;
+  min-width: 250px;
+}
+
+.doctor-card {
+  z-index: 5;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer-center {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
