@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import Navigation from './Navigation';
 import { fetchDoctors } from '../redux/doctors/doctorsSlice';
 import { createReservation } from '../redux/reservations/reservationsSlice';
@@ -13,24 +13,30 @@ import { fetchUsers } from '../redux/users/usersSlice';
 
 const AddReservation = () => {
   const [date, setDate] = useState('');
-  const [doctor, setDoctor] = useState('');
+  const [doctorSelected, setDoctorSelected] = useState('');
   const [loading, setLoading] = useState(true);
   const doctors = useSelector((state) => state.doctors.doctors);
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const doctor = state?.doctor ?? null;
 
   useEffect(() => {
-    const fetchDoctorsData = async () => {
-      try {
-        await dispatch(fetchDoctors());
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (doctor) {
+      setDoctorSelected(doctor);
+    } else {
+      const fetchDoctorsData = async () => {
+        try {
+          await dispatch(fetchDoctors());
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    fetchDoctorsData();
-  }, [dispatch]);
+      fetchDoctorsData();
+    }
+  }, [doctor, dispatch]);
 
   useEffect(() => {
     const fetchUsersData = async () => {
@@ -50,7 +56,7 @@ const AddReservation = () => {
       reservation: {
         date_of_reservation: date,
         user_id: users[0].id,
-        doctor_id: doctor.id,
+        doctor_id: doctorSelected.id,
       },
     }));
     navigate('/myappointments');
@@ -81,12 +87,18 @@ const AddReservation = () => {
                     onChange={(date) => setDate(date)}
                     required
                   />
-                  <Select className="w-full" value={doctor} onChange={(e) => setDoctor(e.target.value)} required displayEmpty>
-                    <MenuItem value="" className="select__doctor" disabled>Select Doctor</MenuItem>
-                    {doctors.map((doctor) => (
-                      <MenuItem key={doctor.id} value={doctor}>{doctor.name}</MenuItem>
-                    ))}
-                  </Select>
+                  {doctor ? (
+                    <Select className="w-full" value={doctorSelected} onChange={(e) => setDoctorSelected(e.target.value)} required displayEmpty>
+                      <MenuItem value={doctor}>{doctor.name}</MenuItem>
+                    </Select>
+                  ) : (
+                    <Select className="w-full" value={doctorSelected} onChange={(e) => setDoctorSelected(e.target.value)} required displayEmpty>
+                      <MenuItem value="" className="select__doctor" disabled>Select Doctor</MenuItem>
+                      {doctors.map((doctor) => (
+                        <MenuItem key={doctor.id} value={doctor}>{doctor.name}</MenuItem>
+                      ))}
+                    </Select>
+                  )}
                 </div>
               </form>
               <div>
