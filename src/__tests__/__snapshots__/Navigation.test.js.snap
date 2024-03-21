@@ -124,7 +124,7 @@ exports[`Tests Navigation component should render page 1`] = `
       >
         <a
           className="active-link"
-          href="/item"
+          href="/"
           onClick={[Function]}
         >
           <li
