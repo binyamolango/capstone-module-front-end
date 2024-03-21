@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const url = 'http://127.0.0.1:3000/api/v1/users';
+const url = 'http://127.0.0.1:3000/registrations';
 
 const createUser = createAsyncThunk('user/createUser', async (data) => {
   try {
@@ -9,7 +9,7 @@ const createUser = createAsyncThunk('user/createUser', async (data) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ user: data }),
     });
 
     if (!response.ok) {
@@ -18,7 +18,7 @@ const createUser = createAsyncThunk('user/createUser', async (data) => {
 
     return await response.json();
   } catch (error) {
-    return { error: error.message };
+    return { error: 'HTTP error! One or more Invalid input' };
   }
 });
 
