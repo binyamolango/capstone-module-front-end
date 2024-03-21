@@ -14,10 +14,15 @@ const Navigation = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const [name, setName] = useState('');
-
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    setName(user);
+    const reduxStateFromLocalStorage = localStorage.getItem('reduxState');
+    const initialReduxState = reduxStateFromLocalStorage
+      ? JSON.parse(reduxStateFromLocalStorage) : null;
+    const session = initialReduxState ? initialReduxState.sessions.createSessionMsg : null;
+
+    if (session && session.user && session.user.username) {
+      setName(session.user.username);
+    }
   }, []);
 
   const toggleMenu = () => {
@@ -28,7 +33,7 @@ const Navigation = () => {
     setShowMenu(false);
   };
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('reduxState');
     navigate('/');
     window.location.reload();
   };
@@ -72,7 +77,7 @@ const Navigation = () => {
 
         <nav className="w-full">
           <ul className="flex flex-col">
-            <NavLink to="/item" className="active-link" onClick={closeMenu}>
+            <NavLink to="/" className="active-link" onClick={closeMenu}>
               <li className="flex p-4 w-full text-sm font-medium cursor-pointer border-b border-gray-200">Doctors</li>
             </NavLink>
 
