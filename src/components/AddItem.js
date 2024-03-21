@@ -22,7 +22,7 @@ const AddItem = () => {
       image_url: imageUrl,
       address,
     }));
-    navigate('/item');
+    navigate('/');
   };
 
   return (
