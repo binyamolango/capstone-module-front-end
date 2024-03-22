@@ -65,9 +65,9 @@ const SignUp = () => {
           Welcome to
           <span className="text-[#4e8de0]"> Edenic Health</span>
         </h1>
-        <div className="flex items-center justify-center flex-col gap-6 w-4/5 p-16 md:max-w-fit md:max-h-fit bg-white rounded-md">
+        <div className="flex items-center justify-center flex-col gap-6 w-4/5 py-6 pb-14 px-32 md:max-w-fit md:max-h-fit bg-white rounded-md">
           <p>{ error && error }</p>
-          <h1 className="font-bold text-4xl text-center">
+          <h1 className="font-bold text-4xl pb-4 text-center">
             Sign
             {' '}
             <span className="text-[#4e8de0]">up</span>
@@ -75,6 +75,7 @@ const SignUp = () => {
           <form className="flex items-center justify-center flex-col gap-6" onSubmit={(e) => handleSubmit(e)}>
             <TextField
               required
+              className="w-60"
               id="outlined-basic"
               type="text"
               onChange={(e) => handleUsernameChange(e)}
@@ -83,6 +84,7 @@ const SignUp = () => {
             />
             <TextField
               required
+              className="w-60"
               id="outlined-basic2"
               type="email"
               onChange={(e) => handleEmailChange(e)}
@@ -91,6 +93,7 @@ const SignUp = () => {
             />
             <TextField
               required
+              className="w-60"
               id="outlined-basic3"
               type="password"
               onChange={(e) => handlePasswordChange(e)}
@@ -99,6 +102,7 @@ const SignUp = () => {
             />
             <TextField
               required
+              className="w-60"
               id="outlined-basic4"
               type="password"
               onChange={(e) => handlePasswordConfirmationChange(e)}

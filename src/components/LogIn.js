@@ -44,8 +44,8 @@ const LogIn = () => {
           Welcome to
           <span className="text-[#4e8de0]"> Edenic Health</span>
         </h1>
-        <div className="flex items-center justify-center flex-col gap-6 w-4/5 p-16 md:max-w-fit md:max-h-fit bg-white rounded-md">
-          <h1 className="font-bold text-4xl text-center">
+        <div className="flex items-center justify-center flex-col gap-6 w-4/5 py-10 pb-14 px-32 md:max-w-fit md:max-h-fit bg-white rounded-md">
+          <h1 className="font-bold text-4xl pb-4 text-center">
             Log
             {' '}
             <span className="text-[#4e8de0]">in</span>
@@ -53,6 +53,7 @@ const LogIn = () => {
           <form className="flex items-center justify-center flex-col gap-6" onSubmit={(e) => handleSubmit(e)}>
             <TextField
               required
+              className="w-60"
               id="outlined-basic"
               type="email"
               onChange={(e) => handleUserEmailChange(e)}
@@ -61,6 +62,7 @@ const LogIn = () => {
             />
             <TextField
               required
+              className="w-60"
               id="outlined-basic2"
               type="password"
               onChange={(e) => handleUserPasswordChange(e)}
