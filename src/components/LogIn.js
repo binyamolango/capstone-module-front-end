@@ -11,6 +11,7 @@ const LogIn = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const session = useSelector((state) => state.sessions.createSessionMsg);
   const loggedIn = session.logged_in;
 
@@ -18,11 +19,21 @@ const LogIn = () => {
     e.preventDefault();
     setLoading(true);
 
-    dispatch(createSession({ email, password }));
-    setLoading(false);
-    if (loggedIn) {
-      navigate('/');
+    try {
+      await dispatch(createSession({ email, password }));
+
+      if (loggedIn) {
+        navigate('/');
+        setEmail('');
+        setPassword('');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      setError('An error occurred during login.');
     }
+
+    setLoading(false);
   };
 
   const handleUserEmailChange = (e) => {
@@ -73,10 +84,18 @@ const LogIn = () => {
               <Button type="submit" variant="outlined" disabled={loading}>
                 {loading ? <CircularProgress size={24} /> : 'Log in'}
               </Button>
-              <Button type="submit" variant="outlined" disabled={loading} onClick={handleSignUp}>
-                {loading ? <CircularProgress size={24} /> : 'Sign up'}
-              </Button>
+              {loading ? (
+                <Button type="submit" variant="outlined" disabled onClick={handleSignUp}>
+                  {loading ? <CircularProgress size={24} /> : 'Sign up'}
+                </Button>
+              )
+                : (
+                  <Button type="submit" variant="outlined" onClick={handleSignUp}>
+                    Sign up
+                  </Button>
+                )}
             </div>
+            <p>{ error && error }</p>
           </form>
         </div>
       </div>

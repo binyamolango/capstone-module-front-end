@@ -15,27 +15,37 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const registration = useSelector((state) => state.users.createUserMsg);
-  let registrationError = registration.error;
-  let registrationStatus = registration.status;
+  const registrationError = registration.error;
+  const registrationStatus = registration.status;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    dispatch(createUser({
-      username,
-      email,
-      password,
-      password_confirmation: passwordConfirmation,
-    }));
-    setLoading(false);
-    if (registrationStatus === 'created') {
-      navigate('/');
-      registrationStatus = null;
-    } else {
-      setError(registrationError);
-      registrationError = null;
+    try {
+      await dispatch(
+        createUser({
+          username,
+          email,
+          password,
+          password_confirmation: passwordConfirmation,
+        }),
+      );
+
+      if (registrationStatus === 'created') {
+        navigate('/');
+        setUserName('');
+        setEmail('');
+        setPassword('');
+        setPasswordConfirmation('');
+      } else {
+        setError(registrationError);
+      }
+    } catch (error) {
+      setError('An error occurred during registration.');
     }
+
+    setLoading(false);
   };
 
   const handleUsernameChange = (e) => {
@@ -66,7 +76,6 @@ const SignUp = () => {
           <span className="text-[#4e8de0]"> Edenic Health</span>
         </h1>
         <div className="flex items-center justify-center flex-col gap-6 w-4/5 py-6 pb-14 px-32 md:max-w-fit md:max-h-fit bg-white rounded-md">
-          <p>{ error && error }</p>
           <h1 className="font-bold text-4xl pb-4 text-center">
             Sign
             {' '}
@@ -110,13 +119,21 @@ const SignUp = () => {
               variant="outlined"
             />
             <div className="flex gap-4">
-              <Button type="submit" variant="outlined" disabled={loading} onClick={handleLogIn}>
-                {loading ? <CircularProgress size={24} /> : 'Log in'}
-              </Button>
+              {loading ? (
+                <Button type="submit" variant="outlined" onClick={handleLogIn} disabled>
+                  Log in
+                </Button>
+              )
+                : (
+                  <Button type="submit" variant="outlined" onClick={handleLogIn}>
+                    Log in
+                  </Button>
+                )}
               <Button type="submit" variant="outlined" disabled={loading}>
                 {loading ? <CircularProgress size={24} /> : 'Sign up'}
               </Button>
             </div>
+            <p>{ error && error }</p>
           </form>
         </div>
       </div>
