@@ -9,18 +9,17 @@ import { useNavigate, useLocation } from 'react-router';
 import Navigation from './Navigation';
 import { fetchDoctors } from '../redux/doctors/doctorsSlice';
 import { createReservation } from '../redux/reservations/reservationsSlice';
-import { fetchUsers } from '../redux/users/usersSlice';
 
 const AddReservation = () => {
   const [date, setDate] = useState('');
   const [doctorSelected, setDoctorSelected] = useState('');
   const [loading, setLoading] = useState(true);
   const doctors = useSelector((state) => state.doctors.doctors);
-  const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state } = useLocation();
   const doctor = state?.doctor ?? null;
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     if (doctor) {
@@ -39,23 +38,22 @@ const AddReservation = () => {
   }, [doctor, dispatch]);
 
   useEffect(() => {
-    const fetchUsersData = async () => {
-      try {
-        await dispatch(fetchUsers());
-      } finally {
-        setLoading(false);
-      }
-    };
+    const reduxStateFromLocalStorage = localStorage.getItem('reduxState');
+    const initialReduxState = reduxStateFromLocalStorage
+      ? JSON.parse(reduxStateFromLocalStorage) : null;
+    const session = initialReduxState ? initialReduxState.sessions.createSessionMsg : null;
 
-    fetchUsersData();
-  }, [dispatch]);
+    if (session && session.user && session.user.username) {
+      setUserId(session.user.id);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createReservation({
       reservation: {
         date_of_reservation: date,
-        user_id: users[0].id,
+        user_id: userId,
         doctor_id: doctorSelected.id,
       },
     }));
