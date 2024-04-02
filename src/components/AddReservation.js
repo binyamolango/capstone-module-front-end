@@ -14,6 +14,7 @@ const AddReservation = () => {
   const [date, setDate] = useState('');
   const [doctorSelected, setDoctorSelected] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const doctors = useSelector((state) => state.doctors.doctors);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -48,16 +49,24 @@ const AddReservation = () => {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createReservation({
-      reservation: {
-        date_of_reservation: date,
-        user_id: userId,
-        doctor_id: doctorSelected.id,
-      },
-    }));
-    navigate('/myappointments');
+
+    try {
+      await dispatch(
+        createReservation({
+          reservation: {
+            date_of_reservation: date,
+            user_id: userId,
+            doctor_id: doctorSelected.id,
+          },
+        }),
+      );
+
+      navigate('/myappointments');
+    } catch (error) {
+      setError('An error occurred while creating the reservation.');
+    }
   };
 
   return (
@@ -100,8 +109,27 @@ const AddReservation = () => {
                 </div>
               </form>
               <div>
-                <button className="p-4 self-end text-white bg-blue-400 rounded-r-[80px] rounded-l-[80px]" type="submit" onClick={(e) => handleSubmit(e)}>Book Appointment</button>
+                {loading ? (
+                  <button
+                    className="p-4 self-end text-white bg-blue-400 rounded-r-[80px] rounded-l-[80px]"
+                    type="submit"
+                    onClick={(e) => handleSubmit(e)}
+                    disabled
+                  >
+                    Book Appointment
+                  </button>
+                )
+                  : (
+                    <button
+                      className="p-4 self-end text-white bg-blue-400 rounded-r-[80px] rounded-l-[80px]"
+                      type="submit"
+                      onClick={(e) => handleSubmit(e)}
+                    >
+                      Book Appointment
+                    </button>
+                  )}
               </div>
+              <p>{error && error}</p>
             </div>
           </div>
         </div>
