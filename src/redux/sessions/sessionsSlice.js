@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const url = 'http://127.0.0.1:3000/sessions';
+const url = 'https://capstone-module-back-end.onrender.com/sessions';
 
 const createSession = createAsyncThunk('session/createSession', async (data) => {
   try {

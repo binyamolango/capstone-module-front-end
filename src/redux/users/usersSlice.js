@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const url = 'http://127.0.0.1:3000/registrations';
+const url = 'https://capstone-module-back-end.onrender.com/registrations';
 
 const createUser = createAsyncThunk('user/createUser', async (data) => {
   try {

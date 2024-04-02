@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const url = 'http://localhost:3000/api/v1/reservations';
+const url = 'https://capstone-module-back-end.onrender.com/api/v1/reservations';
 
 // Create Reservation
 const createReservation = createAsyncThunk('reservations/createReservation', async (data) => {
