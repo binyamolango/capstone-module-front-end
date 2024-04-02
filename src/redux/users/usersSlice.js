@@ -9,7 +9,7 @@ const createUser = createAsyncThunk('user/createUser', async (data) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ user: data }),
+      body: JSON.stringify(data),
     });
 
     if (!response.ok) {
