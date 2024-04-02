@@ -11,6 +11,7 @@
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
+  - [DataBase](#database)
   - [Run tests](#run-tests)
 - [👥 Author](#author)
 - [🔭 Future Features](#future-features)
@@ -70,6 +71,15 @@ To run the project, execute the following command:
 
 ```
   bin/dev
+```
+
+### DataBase <a name="database"></a>
+
+To sign in, use the following seed
+
+```
+  email: binyam@gmail.com
+  password: 123456
 ```
 
 ### Run tests <a name="run tests"></a>
