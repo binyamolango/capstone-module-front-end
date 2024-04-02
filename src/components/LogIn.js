@@ -86,7 +86,7 @@ const LogIn = () => {
               </Button>
               {loading ? (
                 <Button type="submit" variant="outlined" disabled onClick={handleSignUp}>
-                  {loading ? <CircularProgress size={24} /> : 'Sign up'}
+                  Sign up
                 </Button>
               )
                 : (
