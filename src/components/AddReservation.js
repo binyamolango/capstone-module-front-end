@@ -55,11 +55,9 @@ const AddReservation = () => {
     try {
       await dispatch(
         createReservation({
-          reservation: {
             date_of_reservation: date,
             user_id: userId,
             doctor_id: doctorSelected.id,
-          },
         }),
       );
 
