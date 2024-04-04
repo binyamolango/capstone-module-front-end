@@ -11,8 +11,6 @@ const MyReservation = () => {
   const dispatch = useDispatch();
   const [userId, setUserId] = useState('');
 
-  console.log(reservations);
-
   useEffect(() => {
     const reduxStateFromLocalStorage = localStorage.getItem('reduxState');
     const initialReduxState = reduxStateFromLocalStorage
