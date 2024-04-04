@@ -23,19 +23,19 @@ const AddReservation = () => {
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
-    if (doctor) {
-      setDoctorSelected(doctor);
-    } else {
-      const fetchDoctorsData = async () => {
+    const fetchData = async () => {
+      if (doctor) {
+        setDoctorSelected(doctor);
+      } else {
         try {
           await dispatch(fetchDoctors());
         } finally {
           setLoading(false);
         }
-      };
+      }
+    };
 
-      fetchDoctorsData();
-    }
+    fetchData();
   }, [doctor, dispatch]);
 
   useEffect(() => {
