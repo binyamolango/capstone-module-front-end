@@ -22,7 +22,7 @@
 
 # 📖 Capstone Module Front End <a name="about-project"></a>
 
-**Capstone Module Front End** is a web application reserving a doctor that fetches data rails API through this platform.
+**Capstone Module Front End** is a web app for reserving doctors that simplifies the process of scheduling medical appointments. It allows users to browse & select available doctors, view their profiles and specialties, and book appointments based on their preferred date and time. The application streamlines the reservation process, saving time for both patients & healthcare providers.
 
 ## 🛠 Built With <a name="built-with"></a>
 React, node, Visual Studio Code
