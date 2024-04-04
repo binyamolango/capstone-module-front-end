@@ -10,7 +10,7 @@ function ItemDetails({ doctor, backButton }) {
   }
 
   const handleAppointment = () => {
-    navigate('/bookappointment', { state: { doctor } });
+    navigate('/bookappointment');
   };
 
   return (

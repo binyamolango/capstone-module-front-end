@@ -34,8 +34,8 @@ const Navigation = () => {
   };
   const handleLogout = () => {
     localStorage.removeItem('reduxState');
-    window.location.reload();
     navigate('/');
+    window.location.reload();
   };
 
   return (
