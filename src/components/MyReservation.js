@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 import { deleteReservation, fetchReservations } from '../redux/reservations/reservationsSlice';
 
@@ -9,6 +9,20 @@ const MyReservation = () => {
   const error = useSelector((state) => state.reservations.error);
   const reservations = useSelector((state) => state.reservations.reservations);
   const dispatch = useDispatch();
+  const [userId, setUserId] = useState('');
+
+  console.log(reservations);
+
+  useEffect(() => {
+    const reduxStateFromLocalStorage = localStorage.getItem('reduxState');
+    const initialReduxState = reduxStateFromLocalStorage
+      ? JSON.parse(reduxStateFromLocalStorage) : null;
+    const session = initialReduxState ? initialReduxState.sessions.createSessionMsg : null;
+
+    if (session && session.user && session.user.username) {
+      setUserId(session.user.id);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchReservationsData = async () => {
@@ -52,7 +66,7 @@ const MyReservation = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {reservations?.map((reservation) => (
+                  {reservations?.filter((res) => res.user_id === userId).map((reservation) => (
                     <tr key={reservation.id} className="bg-white border-b dark:border-gray-300">
                       <td aria-label="dsa" className="text-gray-600 px-2 md:px-6 py-2 font-medium hidden md:block">{reservation.doctor.name}</td>
                       <td className="text-gray-600 px-2 md:px-6 py-2">{reservation.date_of_reservation}</td>
